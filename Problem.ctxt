@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Problem()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Problem.Within\ this\ project,\ create\ a\ class\ called\ Problem.\ \n\ This\ has\ one\ field\ (instance\ variable)\ a\ 2-dimensional\ int\ array\ called\ \ startValues.\n\ Use\ the\ constructor\ of\ Problem\ to\ initialise\ startValues\ to\ the\ values\ of\ the\ following\ Sudoku\ problem\:\n
+comment1.params=inNumber\ cellNoPos
+comment1.target=boolean\ usedInRow(int,\ int)
+comment1.text=\n\ \n
+comment2.params=inNumber\ cellNoPos
+comment2.target=boolean\ usedInCol(int,\ int)
+comment2.text=\n\ \n
+comment3.params=number\ cellNoPos
+comment3.target=boolean\ usedInBlock(int,\ int)
+comment4.params=inNumber\ cellNoPos
+comment4.target=boolean\ numberNotUsed(int,\ int)
+comment5.params=inNum
+comment5.target=boolean\ validEntry(java.lang.String)
+numComments=6
