@@ -7,28 +7,25 @@ import java.util.*;
  */
 public class Problem
 {
-    // 2-D Array instance variable
+    // instance variables - replace the example below with your own
     private int [] [] startValues;
 
     /**
-     * The constructer for this Class uses a 2-dimentional array which is has 9 rows and 9 collums
-     * The Variable is initailized to 0:
+     * Constructor for objects of class Problem.Within this project, create a class called Problem. 
+     * This has one field (instance variable) a 2-dimensional int array called  startValues.
+     * Use the constructor of Problem to initialise startValues to the values of the following Sudoku problem:
      */
-
     public Problem()
     {
-        startValues = new int [9] [9];
-    }
-
-    public int getStartValues(int row, int col){
-        return startValues[row][col];
-    }
-
-    // Mutator method that sets inputs the user deifiend variable into the Instance variable.
-    public void setStartValues(int row, int col, int value){
-
-        
-        startValues[row][col] = value;
+        startValues = new int [ ] [ ]{{0,0,0,9,0,3,0,0,0}, //starts at 0
+            {0,1,0,0,8,0,0,6,0}, 
+            {0,0,9,4,0,6,2,0,0},
+            {0,2,4,0,0,0,8,3,0}, 
+            {3,0,0,0,0,0,0,0,5},
+            {0,5,7,0,0,0,4,2,0},
+            {0,0,5,8,0,2,1,0,0}, 
+            {0,7,0,0,3,0,0,5,0},
+            {0,0,0,5,0,7,0,0,0}};
     }
 
     /**
@@ -54,15 +51,15 @@ public class Problem
      * 
      */
     public boolean usedInCol(int inNumber, int cellNoPos){
-
-        int col = cellNoPos % startValues.length; 
+        //int row = cellNoPos / startValues.length;               
+        int col = cellNoPos % startValues.length; // possible redundancy of code
         if((cellNoPos > 80) || (cellNoPos < 0)){
             System.out.println(cellNoPos + " is out of bounds");
             return false;
         }
         for(int i=0; i< startValues.length; i++){                     
             if(inNumber == startValues[col][i]) {
-                return true;   
+                return true;    // number already in row
 
             }
         }  
@@ -98,48 +95,20 @@ public class Problem
         return true;
     }
 
-    //Function: isNull - entry is null
-    public boolean isNull(String entry, int cellNo) {
-        return (entry == null);
-    }
-    //Function: notCorrectLength - entry not single character
-    public boolean notCorrectLength(String entry, int cellNo) {
-        return (entry.length()!= 1);
-    }
-    //Function: notDigit - entry not digit
-    public boolean notDigit(String entry, int cellNo) {
-        return (!(Character.isDigit(entry.charAt(0))));
-    }
-    //Function: notZero - entry not zero
-    public boolean notZero(String entry, int cellNo) {
-        return (entry.charAt(0)!='0');
-    }
-
-    public boolean validEntry(String entry, int cellNo) {
-        if(isNull(entry, cellNo)){ 
+    public boolean validEntry(String inNum)
+    {
+        if(!(inNum.length() == 1)){
+            System.out.println("Please enter a character between 1 and 9.");
+            return false;}
+        char x = inNum.charAt(0);
+        if(!(Character.isDigit(x))){
+            System.out.println("Please enter a numeric character");
+            return false;}
+        Integer y = Integer.parseInt(inNum);
+        if((y <= 0) || ((y >= 10))){
+            System.out.println("Out of bounds");
             return false;
         }
-
-        if(notCorrectLength(entry, cellNo)){
-            System.out.println("Invalid entry – More than one character.");
-            return false;
-        }
-
-        if(notDigit(entry, cellNo)){
-            System.out.println("Invalid entry – Not a digit.");
-            return false;
-        }
-        if(!(notZero(entry, cellNo))){
-            System.out.println("Invalid entry – Not a digit 1 - 9 inclusive");
-            return false;
-        }
-
-        int number = Character.digit(entry.charAt(0),10);
-        if(!(numberNotUsed(number, cellNo))){
-            System.out.println("Invalid entry – Digit already been used");
-        }
-
-        return true;
-    }
-
+    return true;
+}
 }
