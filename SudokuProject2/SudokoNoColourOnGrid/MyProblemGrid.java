@@ -17,20 +17,22 @@ public class MyProblemGrid extends ProblemGrid
     {
         int row = cellNo / 9;                               		//Identify row position
         int col = cellNo % 9;                               		//Identify column position
-        String num = obtainEntry(cellNo);
-        if(problem.validEntry(num, cellNo)){                 
+       
+        // Fix Null
+        if(problem.getStartValues(row, col)!=0){
             problem.setStartValues(row, col, 0);
             cellEntry(cellNo, null, "black");  
         }else{
-            String number = obtainEntry(cellNo);
+            String number = ProblemGrid.obtainEntry(cellNo);
             if(problem.validEntry(number, cellNo)){    	//Check entry
                 problem.setStartValues(row, col, Integer.parseInt(number)); 								//Store valid entry
-                cellEntry(cellNo, number, "blue");		//Display entry blue on pink
+                //cellEntry(cellNo, number, "blue");		//Display entry blue on pink
             }else{
                 cellEntry(cellNo, null, "black");      //Clearing cell and resetting format
             }
         }
 
+        
     }
 
     /**
@@ -50,18 +52,19 @@ public class MyProblemGrid extends ProblemGrid
     /**
      * This Static Method takes one parameter of type int 
      * that coresponds with the cell number and is called 
-     * from the ProblemGrid Class which this class inherits.
+     * from the ProblemGrid Class which this Class inherits.
      */  
     public static String obtainEntry (int cellNo){
+        
 
         return ProblemGrid.obtainEntry(cellNo);
-    }
 
+    }
     // Getting a null Exception error on the Abstarct class of ProblemGrid and rally confusing me now
-    // j
+    // 
     public static void cellEntry(int cellNo, String value, String forColor){
 
         ProblemGrid.cellEntry(cellNo,  value, forColor);
-
     }
 }
+

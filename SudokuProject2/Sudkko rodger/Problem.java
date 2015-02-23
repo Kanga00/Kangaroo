@@ -27,7 +27,6 @@ public class Problem
     // Mutator method that sets inputs the user deifiend variable into the Instance variable.
     public void setStartValues(int row, int col, int value){
 
-        
         startValues[row][col] = value;
     }
 
